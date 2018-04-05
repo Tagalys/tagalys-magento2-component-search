@@ -11,13 +11,12 @@ class Index extends \Magento\Framework\App\Action\Action
     public function __construct(
         Context $context,
         \Magento\Framework\View\Result\PageFactory $resultPageFactory,
-        \Magento\Framework\View\Page\Config $pageConfig,
-        \Magento\Framework\App\RequestInterface $request
+        \Magento\Framework\View\Page\Config $pageConfig
     )
     {
         $this->_resultPageFactory = $resultPageFactory;
         $this->pageConfig = $pageConfig;
-        $this->request = $request;
+        $this->request = $context->getRequest();
         parent::__construct($context);
     }
  

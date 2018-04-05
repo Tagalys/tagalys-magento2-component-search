@@ -5,12 +5,11 @@ class Tsuggestions extends \Magento\Framework\View\Element\Template
 {
     public function __construct(
         \Magento\Framework\View\Element\Template\Context $context,
-        \Tagalys\Sync\Helper\Configuration $tagalysConfiguration,
-        \Magento\Store\Model\StoreManagerInterface $storeManager
+        \Tagalys\Sync\Helper\Configuration $tagalysConfiguration
     )
     {
         $this->tagalysConfiguration = $tagalysConfiguration;
-        $this->storeManager = $storeManager;
+        $this->storeManager = $context->getStoreManager();
         parent::__construct($context);
     }
 
