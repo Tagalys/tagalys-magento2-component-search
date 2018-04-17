@@ -22,7 +22,11 @@ class Tsuggestions extends \Magento\Framework\View\Element\Template
     }
 
     public function getCurrentCurrency() {
-        return $this->tagalysConfiguration->getCurrencies($this->storeManager->getStore(), true);
+        try {
+            return $this->tagalysConfiguration->getCurrenciesByCode($this->storeManager->getStore())[$this->storeManager->getStore()->getCurrentCurrency()->getCode()];
+        } catch (\Exception $e) {
+            return $this->tagalysConfiguration->getCurrencies($this->storeManager->getStore(), true);
+        }
     }
 
     public function getCurrentStoreId() {

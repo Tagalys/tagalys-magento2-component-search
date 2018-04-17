@@ -4,12 +4,12 @@
         $apiCredentials = $this->apiCredentials();
     ?>
     <script>
-        require(['jquery', 'jquery/ui'], function($){ 
+        require(['jquery', 'jquery/ui'], function(jQuery){ 
             try {
-                $(document).on('tagalys:ready', function() {
-                    $.fn.tagalys_search_suggestions.search_link = function( q, qf, qin ) {
+                jQuery(document).on('tagalys:ready', function() {
+                    jQuery.fn.tagalys_search_suggestions.search_link = function( q, qf, qin ) {
                         var tagalys_search_base_url = "<?php echo $this->getTsearchUrl(); ?>?q=";
-                        if (typeof(qf) == 'undefined' || $.isEmptyObject(qf)) {
+                        if (typeof(qf) == 'undefined' || jQuery.isEmptyObject(qf)) {
                             return (tagalys_search_base_url + encodeURIComponent(q));
                         } else {
                             str = Object.keys(qf).map(function(key){ 
@@ -20,7 +20,7 @@
                             return tagalys_search_base_url.concat(encodeURIComponent(q) +"&"+qf_param);
                         }
                     };
-                    $.fn.tagalys_search_suggestions.popular_searches  = function() {
+                    jQuery.fn.tagalys_search_suggestions.popular_searches  = function() {
                         <?php
                             try {
                                 $popularSearches = $this->getTagalysConfig('store:' . $this->getCurrentStoreId() . ':popular_searches');
@@ -34,7 +34,7 @@
                             }
                         ?>
                     };
-                    $('<?php echo $this->getTagalysConfig('search_box_selector') ?>').tagalys_search_suggestions({
+                    jQuery('<?php echo $this->getTagalysConfig('search_box_selector') ?>').tagalys_search_suggestions({
                         currency: {
                             label: "<?php echo $currency['label']; ?>",
                             exchange_rate: "<?php echo  $currency['exchange_rate']; ?>",
