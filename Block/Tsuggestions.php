@@ -13,8 +13,8 @@ class Tsuggestions extends \Magento\Framework\View\Element\Template
         parent::__construct($context);
     }
 
-    public function isTagalysEnabled() {
-        return $this->tagalysConfiguration->isTagalysEnabledForStore($this->getCurrentStoreId());
+    public function isTagalysEnabled($module = false) {
+        return $this->tagalysConfiguration->isTagalysEnabledForStore($this->getCurrentStoreId(), $module);
     }
 
     public function apiCredentials() {
